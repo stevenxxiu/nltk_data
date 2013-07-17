@@ -15,16 +15,16 @@ from nltk.downloader import build_index
 from xml.etree import ElementTree
 
 if len(sys.argv) != 4:
-    print "Usage: "
-    print "build_pkg_index.py <path-to-packages> <base-url> <output-file>"
+    print("Usage: ")
+    print("build_pkg_index.py <path-to-packages> <base-url> <output-file>")
     sys.exit(-1)
 
 ROOT, BASE_URL, OUT = sys.argv[1:]
 
 index = build_index(ROOT, BASE_URL)
 s = ElementTree.tostring(index)
-out = open(OUT, 'w')
-out.write(xml_header)
+out = open(OUT, 'wb')
+out.write(xml_header.encode())
 out.write(s)
 out.close()
 
